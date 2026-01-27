@@ -1,164 +1,245 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import nextickImg from "@/assets/projects/nextick.jpg";
-import offwegoImg from "@/assets/projects/offwego.jpg";
-import studentSystemImg from "@/assets/projects/student-system.jpg";
-import todoAppImg from "@/assets/projects/todo-app.jpg";
+import { useRef } from "react";
 
-const projects = [
+const mainProjects = [
   {
     title: "Nextick",
-    description: "An online store for watches and accessories, featuring user and admin functionalities with MVC architecture.",
-    image: nextickImg,
-    highlights: [
-      "Built with MongoDB, Express.js, and EJS with 1,500+ lines of code",
-      "Implemented OTP-based authentication with nodemailer",
-      "Optimized performance with node-cache, reducing API calls by 20%",
-      "Admin dashboard with data visualization and product management",
-      "Integrated Razorpay payment gateway and Google OAuth"
-    ],
-    technologies: ["Express.js", "MongoDB", "Node.js", "EJS", "Razorpay", "MVC"],
-    github: "#",
+    description: "A high-performance e-commerce ecosystem for luxury timepieces. Built with Node.js and MongoDB, featuring real-time inventory tracking, secure Razorpay checkout, and a sleek administrative command center.",
+    image: "/Nextick.jpg",
+    technologies: ["Node.js", "MongoDB", "Express", "Razorpay", "EJS"],
+    github: "https://github.com/Navya-shaji/Nextick",
     demo: "#"
   },
   {
     title: "OffWeGo",
-    description: "A travel package booking website built with clean architecture principles, focusing on modularity and scalability.",
-    image: offwegoImg,
-    highlights: [
-      "Structured backend using Clean Architecture",
-      "React and TypeScript frontend with responsive design",
-      "RESTful APIs with JWT authentication",
-      "MongoDB database for packages and bookings",
-      "Modular design for easy feature extension"
-    ],
-    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-    github: "#",
+    description: "A sophisticated travel-tech platform engineered with Clean Architecture. Seamlessly manages global tour packages with a focus on type-safety, modularity, and an intuitive booking UX.",
+    image: "/offwego-cover.jpg",
+    technologies: ["React", "TypeScript", "Express", "Clean Architecture", "MongoDB"],
+    github: "https://github.com/Navya-shaji/OffWeGo",
+    demo: "#"
+  }
+];
+
+const subProjects = [
+  {
+    title: "AI Studio",
+    description: "Next-gen image enhancement suite leveraging neural networks for smart object removal and generative fill.",
+    image: "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=400&q=80",
+    technologies: ["React", "AI APIs", "Tailwind"],
+    github: "https://github.com/Navya-shaji/Ai-Image-genarator",
+    demo: "https://ai-image-genarator-nu.vercel.app"
+  },
+  {
+    title: "HOHO",
+    description: "Festive real-time simulation tracking Santa's journey with interactive Christmas mini-games.",
+    image: "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=400&q=80",
+    technologies: ["React", "Firebase", "Framer Motion"],
+    github: "https://github.com/Navya-shaji/HoHo",
+    demo: "https://app-for-santa.vercel.app"
+  },
+  {
+    title: "Student System",
+    description: "Enterprise-grade academic record manager implementing the Repository Pattern for rock-solid data integrity.",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80",
+    technologies: ["TypeScript", "PostgreSQL", "Node.js"],
+    github: "https://github.com/Navya-shaji/student-management-system",
     demo: "#"
   },
   {
-    title: "Student Management System",
-    description: "A backend application to manage student records using TypeScript and repository design pattern.",
-    image: studentSystemImg,
-    highlights: [
-      "Implemented Repository Design Pattern",
-      "CRUD operations for student management",
-      "TypeScript for strong typing and maintainability",
-      "Clean separation between business logic and data access"
-    ],
-    technologies: ["Node.js", "TypeScript", "Express", "Repository Pattern"],
-    github: "#",
-    demo: "#"
-  },
-  {
-    title: "To-Do App",
-    description: "A simple and interactive task management app built with React.",
-    image: todoAppImg,
-    highlights: [
-      "Add, edit, complete, and delete tasks",
-      "React state and props for dynamic UI",
-      "Responsive CSS for mobile-friendly interface"
-    ],
-    technologies: ["React", "JavaScript", "CSS", "Vite"],
-    github: "#",
+    title: "Task Harmony",
+    description: "Minimalist productivity engine designed to eliminate digital clutter through intuitive priority grouping.",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80",
+    technologies: ["React", "Vite", "Tailwind"],
+    github: "https://github.com/Navya-shaji/Task-Harmony",
     demo: "#"
   }
 ];
 
 export const Projects = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === "left" ? scrollLeft - clientWidth / 2 : scrollLeft + clientWidth / 2;
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="projects" className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-32 relative overflow-hidden bg-transparent">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-clip-text">
-              Featured Projects
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-black tracking-[0.2em] uppercase mb-6">
+            <Sparkles className="w-3.5 h-3.5" />
+            The Portfolio
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
+            Engineering <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">Digital Solutions</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Building scalable applications with modern architecture patterns
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
+        {/* Main Projects */}
+        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto mb-32">
+          {mainProjects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
+              className="group relative"
             >
-              <Card className="border-border shadow-card hover:shadow-glow transition-smooth flex flex-col h-full overflow-hidden group">
-                {/* Project Image */}
-                <div className="relative overflow-hidden h-48">
+              {/* Card Container */}
+              <div className="relative rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-gray-200/50 border border-gray-100 transition-all duration-500 hover:shadow-primary/5">
+
+                {/* Image Section */}
+                <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button variant="secondary" size="sm" asChild>
-                      <a href={project.github} aria-label="View on GitHub">
-                        <Github className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+
+                  {/* Floating Tech Stack Overlay */}
+                  <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <span key={tech} className="px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-widest rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Actions Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 translate-y-10 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                    <Button
+                      size="lg"
+                      className="h-14 rounded-2xl bg-white text-gray-900 hover:bg-white/90 font-black shadow-2xl"
+                      asChild
+                    >
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <Github className="w-5 h-5" />
+                        Source
                       </a>
                     </Button>
-                    <Button variant="hero" size="sm" asChild>
-                      <a href={project.demo} aria-label="View live demo">
-                        <ExternalLink className="w-4 h-4" />
+                    <Button
+                      size="lg"
+                      className="h-14 rounded-2xl bg-primary text-white hover:bg-primary/90 font-black shadow-2xl shadow-primary/20"
+                      asChild
+                    >
+                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                        <ExternalLink className="w-5 h-5" />
+                        Live
                       </a>
                     </Button>
                   </div>
                 </div>
 
-                <CardHeader>
-                  <CardTitle className="text-2xl">{project.title}</CardTitle>
-                  <CardDescription className="text-base">
+                {/* Info Section */}
+                <div className="p-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-3xl font-black text-gray-900 group-hover:text-primary transition-colors tracking-tighter uppercase">{project.title}</h3>
+                    <div className="w-12 h-0.5 bg-primary/20" />
+                  </div>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
                     {project.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="flex-1 flex flex-col">
-                  <div className="mb-4 flex-1">
-                    <h4 className="font-semibold text-sm text-primary mb-2">Key Features:</h4>
-                    <ul className="space-y-1 text-sm text-muted-foreground">
-                      {project.highlights.slice(0, 3).map((highlight, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-accent mr-2">•</span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-50">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="text-[10px] font-black text-primary/40 uppercase tracking-widest mr-4">
+                        # {tech}
+                      </span>
+                    ))}
                   </div>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="secondary"
-                          className="text-xs"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Sub Projects Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto"
+        >
+          <div className="flex items-end justify-between mb-12 px-2">
+            <div>
+              <h3 className="text-4xl font-black text-gray-900 tracking-tighter uppercase">More Work</h3>
+              <p className="text-gray-400 font-bold uppercase text-xs tracking-widest mt-2">Experimental & Side Projects</p>
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={() => scroll("left")}
+                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-primary group hover:border-primary hover:bg-primary/5 transition-all active:scale-90"
+              >
+                <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-1" />
+              </button>
+              <button
+                onClick={() => scroll("right")}
+                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-primary group hover:border-primary hover:bg-primary/5 transition-all active:scale-90"
+              >
+                <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          </div>
+
+          <div className="relative group/gallery">
+            <div
+              ref={scrollRef}
+              className="flex gap-8 overflow-x-auto pb-12 px-2 scrollbar-hide snap-x snap-mandatory"
+              style={{ scrollBehavior: 'smooth' }}
+            >
+              {subProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="flex-shrink-0 w-[380px] group/card snap-start"
+                >
+                  <div className="rounded-[2rem] bg-white p-6 shadow-xl shadow-gray-200/40 border border-gray-100 hover:border-primary/40 transition-all duration-300">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white text-gray-900 flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+                          <Github className="w-6 h-6" />
+                        </a>
+                      </div>
+                    </div>
+                    <h4 className="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{project.title}</h4>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="px-3 py-1 bg-gray-50 text-primary/60 text-[9px] font-black rounded-lg uppercase tracking-widest border border-gray-100">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
     </section>
   );
 };
