@@ -34,7 +34,7 @@ export const Hero = () => {
               <h2 className="text-3xl md:text-4xl font-handwritten text-secondary italic opacity-80">
                 Hi! I Am
               </h2>
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.8] text-gray-900 uppercase font-heading">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.8] text-gray-900 uppercase font-heading">
                 NAVYA<br />
                 <span className="text-primary italic relative">
                   SHAJI.
@@ -88,11 +88,6 @@ export const Hero = () => {
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5" />
                   India
-                </div>
-                <div className="w-1 h-1 bg-gray-300 rounded-full" />
-                <div className="flex items-center gap-1.5">
-                  <Globe className="w-3.5 h-3.5" />
-                  Remote
                 </div>
               </motion.div>
             </div>
@@ -158,9 +153,9 @@ export const Hero = () => {
               className="space-y-6 flex flex-col items-center lg:items-end"
             >
               <div className="flex flex-col items-center lg:items-end">
-                <span className="text-5xl md:text-6xl font-black text-gray-900 leading-none tracking-tighter font-heading">Software</span>
+                <span className="text-4xl md:text-5xl font-black text-gray-900 leading-none tracking-tighter font-heading">Software</span>
                 <div className="relative">
-                  <span className="text-5xl md:text-6xl font-handwritten text-primary italic mt-[-5px]">Developer</span>
+                  <span className="text-4xl md:text-5xl font-handwritten text-primary italic mt-[-5px]">Developer</span>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
@@ -169,15 +164,6 @@ export const Hero = () => {
                   />
                 </div>
               </div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-4 px-10 py-5 bg-gray-900 text-white rounded-2xl font-black text-lg shadow-2xl shadow-black/20 hover:bg-primary transition-all flex items-center gap-3 group"
-              >
-                Let's Talk
-                <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </motion.button>
             </motion.div>
           </div>
 

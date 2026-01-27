@@ -4,6 +4,7 @@ import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 import { PageTransition } from "@/components/PageTransition";
+import { Github, Twitter, Linkedin } from "lucide-react";
 
 const Index = () => {
   return (
@@ -32,7 +33,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
-              <div className="text-3xl font-black tracking-tighter text-gray-900 mb-1 uppercase">
+              <div className="text-3xl font-black tracking-tighter text-gray-900 mb-1 uppercase font-heading">
                 Navya Shaji
               </div>
               <p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest">
@@ -40,23 +41,34 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
-              <p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest mb-2 font-mono">Reach Out</p>
-              <a href="mailto:navyacs122511@gmail.com" className="text-xl font-black text-gray-900 hover:text-primary transition-colors border-b-2 border-primary/20 pb-1 uppercase tracking-tighter">
-                navyacs122511@gmail.com
-              </a>
+            <div className="flex flex-col items-center md:items-end gap-6 text-center md:text-right">
+              <div className="flex gap-4">
+                {[
+                  { Icon: Github, href: "https://github.com/Navya-shaji" },
+                  { Icon: Twitter, href: "https://x.com/navyacs122511" },
+                  { Icon: Linkedin, href: "https://www.linkedin.com/in/navya-shaji-b3b81b325/" }
+                ].map((social, i) => (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-gray-50 hover:bg-primary hover:text-white flex items-center justify-center transition-all duration-300"
+                  >
+                    <social.Icon className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-col items-center md:items-end gap-1">
+                <p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest font-mono">Reach Out</p>
+                <a href="mailto:navyacs122511@gmail.com" className="text-xl font-black text-gray-900 hover:text-primary transition-colors border-b-2 border-primary/20 pb-0.5 uppercase tracking-tighter font-heading">
+                  navyacs122511@gmail.com
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="mt-16 pt-8 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest">
-              Built with Passion & React Shell
-            </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Privacy</a>
-              <a href="#" className="text-[10px] font-black text-gray-400 uppercase tracking-widest hover:text-primary transition-colors">Terms</a>
-            </div>
-          </div>
+
         </div>
       </footer>
     </div>

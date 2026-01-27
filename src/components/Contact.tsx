@@ -86,7 +86,7 @@ export const Contact = () => {
             <Sparkles className="w-3.5 h-3.5" />
             Let's Sync Up
           </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
             Start A <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">Conversation</span>
           </h2>

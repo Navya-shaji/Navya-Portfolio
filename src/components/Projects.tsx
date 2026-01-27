@@ -26,7 +26,7 @@ const subProjects = [
   {
     title: "AI Studio",
     description: "Next-gen image enhancement suite leveraging neural networks for smart object removal and generative fill.",
-    image: "https://images.unsplash.com/photo-1542744094-24638eff58bb?w=400&q=80",
+    image: "/ai-studio.png",
     technologies: ["React", "AI APIs", "Tailwind"],
     github: "https://github.com/Navya-shaji/Ai-Image-genarator",
     demo: "https://ai-image-genarator-nu.vercel.app"
@@ -44,7 +44,7 @@ const subProjects = [
     description: "Enterprise-grade academic record manager implementing the Repository Pattern for rock-solid data integrity.",
     image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80",
     technologies: ["TypeScript", "PostgreSQL", "Node.js"],
-    github: "https://github.com/Navya-shaji/student-management-system",
+    github: "https://github.com/Navya-shaji/StudentManagement-typescript",
     demo: "#"
   },
   {
@@ -52,7 +52,7 @@ const subProjects = [
     description: "Minimalist productivity engine designed to eliminate digital clutter through intuitive priority grouping.",
     image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80",
     technologies: ["React", "Vite", "Tailwind"],
-    github: "https://github.com/Navya-shaji/Task-Harmony",
+    github: "https://github.com/Navya-shaji/to-do-list",
     demo: "#"
   }
 ];
@@ -82,7 +82,7 @@ export const Projects = () => {
             <Sparkles className="w-3.5 h-3.5" />
             The Portfolio
           </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
             Engineering <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">Digital Solutions</span>
           </h2>
@@ -214,6 +214,11 @@ export const Projects = () => {
                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white text-gray-900 flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
                           <Github className="w-6 h-6" />
                         </a>
+                        {project.demo !== "#" && (
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+                            <ExternalLink className="w-6 h-6" />
+                          </a>
+                        )}
                       </div>
                     </div>
                     <h4 className="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{project.title}</h4>
