@@ -9,7 +9,7 @@ const mainProjects = [
     description: "A high-performance e-commerce ecosystem for luxury timepieces. Built with Node.js and MongoDB, featuring real-time inventory tracking, secure Razorpay checkout, and a sleek administrative command center.",
     image: "/Nextick.jpg",
     technologies: ["Node.js", "MongoDB", "Express", "Razorpay", "EJS"],
-    github: "https://github.com/Navya-shaji/Nextick",
+    github: "https://github.com/Navya-shaji/NextTIck-E-Commerce",
     demo: "#"
   },
   {
@@ -18,7 +18,7 @@ const mainProjects = [
     image: "/offwego-cover.jpg",
     technologies: ["React", "TypeScript", "Express", "Clean Architecture", "MongoDB"],
     github: "https://github.com/Navya-shaji/OffWeGo",
-    demo: "#"
+    demo: "https://offwego.online"
   }
 ];
 
@@ -132,16 +132,18 @@ export const Projects = () => {
                         Source
                       </a>
                     </Button>
-                    <Button
-                      size="lg"
-                      className="h-14 rounded-2xl bg-primary text-white hover:bg-primary/90 font-black shadow-2xl shadow-primary/20"
-                      asChild
-                    >
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                        <ExternalLink className="w-5 h-5" />
-                        Live
-                      </a>
-                    </Button>
+                    {project.demo !== "#" && (
+                      <Button
+                        size="lg"
+                        className="h-14 rounded-2xl bg-primary text-white hover:bg-primary/90 font-black shadow-2xl shadow-primary/20"
+                        asChild
+                      >
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                          <ExternalLink className="w-5 h-5" />
+                          Live
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </div>
 
