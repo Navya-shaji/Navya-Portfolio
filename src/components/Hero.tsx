@@ -119,14 +119,14 @@ export const Hero = () => {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-4 top-[20%] z-20 bg-white p-4 rounded-2xl shadow-2xl border border-primary/5 flex items-center gap-3 backdrop-blur-md"
+                className="absolute -right-2 md:-right-4 bottom-[15%] md:bottom-auto md:top-[20%] z-20 bg-white p-3 md:p-4 rounded-xl md:rounded-2xl shadow-2xl border border-primary/5 flex items-center gap-2 md:gap-3 backdrop-blur-md"
               >
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-primary" />
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter shadow-black">Developer</div>
-                  <div className="text-lg font-black text-gray-900 leading-none">Full Stack</div>
+                  <div className="text-[8px] md:text-[10px] font-bold text-gray-400 uppercase tracking-tighter shadow-black">Developer</div>
+                  <div className="text-base md:text-lg font-black text-gray-900 leading-none">Full Stack</div>
                 </div>
               </motion.div>
             </motion.div>
