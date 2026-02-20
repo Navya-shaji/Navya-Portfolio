@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Download, Code2, Database, Sparkles, Eye, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const techStack = [
   { name: "MongoDB", color: "#47A248", icon: "🍃", category: "Database" },
@@ -21,55 +22,49 @@ const techStack = [
   { name: "DSA", color: "#FF6B6B", icon: "🧮", category: "Core" },
 ];
 
-const stats = [
-  { label: "Projects", value: "20+", icon: <Code2 className="w-4 h-4" /> },
-  { label: "Technologies", value: "15+", icon: <Database className="w-4 h-4" /> },
-  { label: "LeetCode Solved", value: "397+", icon: <Trophy className="w-4 h-4 text-yellow-500" /> },
-];
-
 const TechGrid = () => {
   return (
-    <div className="relative w-full flex items-center justify-center p-4 md:p-12">
-      {/* Premium Background Layer */}
-      <div className="absolute inset-x-0 inset-y-8 bg-gradient-to-br from-primary/10 via-white to-secondary/10 rounded-[2.5rem] blur-[2px] shadow-2xl shadow-gray-200/50" />
+    <div className="relative w-full p-2 md:p-6 group">
+      {/* Refined Glass Container for Tech Stack */}
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-xl rounded-[3rem] shadow-2xl shadow-gray-200/30 -z-10 transition-all duration-700 group-hover:bg-white/60" />
 
       {/* Responsive Tech Cards Grid */}
-      <div className="relative grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4 md:gap-6 max-w-2xl px-2">
+      <div className="relative grid grid-cols-4 sm:grid-cols-5 gap-4 md:gap-5 max-w-2xl mx-auto py-8 px-4">
         {techStack.map((tech, index) => {
           const delay = index * 0.05;
 
           return (
             <motion.div
               key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay, duration: 0.3 }}
               viewport={{ once: true }}
               whileHover={{
-                scale: 1.15,
-                rotate: index % 2 === 0 ? 3 : -3,
+                scale: 1.1,
+                y: -5,
+                zIndex: 30,
                 transition: { type: "spring", stiffness: 400, damping: 10 }
               }}
-              className="relative group cursor-pointer"
+              className="relative group/item cursor-pointer flex flex-col items-center"
             >
-              {/* Premium Glass Tech Card */}
-              <div
-                className="relative w-16 h-16 md:w-24 md:h-24 rounded-2xl bg-white/60 backdrop-blur-md shadow-lg border border-white flex flex-col items-center justify-center gap-2 overflow-hidden transition-all group-hover:bg-white group-hover:shadow-2xl group-hover:border-primary/40"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="text-2xl md:text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">
-                  {tech.icon}
-                </span>
-                <span className="text-[9px] md:text-[10px] font-black text-gray-500 relative z-10 text-center px-1 group-hover:text-primary uppercase tracking-tighter">
-                  {tech.name}
-                </span>
-              </div>
-
-              {/* Enhanced Tooltip */}
-              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20 translate-y-2 group-hover:translate-y-0">
-                <div className="bg-gray-900 text-white text-[10px] px-3 py-1.5 rounded-full whitespace-nowrap font-bold shadow-2xl shadow-black/20 border border-white/10 uppercase tracking-widest">
+              {/* Enhanced Tooltip - Moved to Top */}
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover/item:opacity-100 transition-all duration-300 pointer-events-none z-50">
+                <div className="bg-gray-900 text-white text-[9px] px-3 py-1.5 rounded-full whitespace-nowrap font-bold shadow-2xl uppercase tracking-widest scale-75 group-hover/item:scale-100 transition-transform origin-bottom">
                   {tech.category}
                 </div>
+              </div>
+
+              {/* Refined Glass Tech Card */}
+              <div
+                className="w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-white shadow-sm flex flex-col items-center justify-center gap-1 transition-all duration-300 group-hover/item:shadow-xl group-hover/item:bg-white relative z-10"
+              >
+                <span className="text-xl md:text-2xl transform group-hover/item:scale-110 transition-transform duration-300">
+                  {tech.icon}
+                </span>
+                <span className="text-[10px] md:text-[11px] font-bold text-gray-600 text-center px-1 uppercase tracking-tight group-hover/item:text-primary">
+                  {tech.name}
+                </span>
               </div>
             </motion.div>
           );
@@ -82,11 +77,32 @@ const TechGrid = () => {
 export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Live LeetCode Stats Fetching
+  const { data: leetcodeData } = useQuery({
+    queryKey: ['leetcodeStats'],
+    queryFn: async () => {
+      const response = await fetch('https://leetcode-stats-api.herokuapp.com/Navyacs');
+      if (!response.ok) throw new Error('Failed to fetch');
+      return response.json();
+    },
+    refetchInterval: 600000, // Refetch every 10 minutes
+  });
+
+  const stats = [
+    { label: "Projects", value: "20+", icon: <Code2 className="w-4 h-4" /> },
+    { label: "Technologies", value: "15+", icon: <Database className="w-4 h-4" /> },
+    {
+      label: "LeetCode Solved",
+      value: leetcodeData?.totalSolved?.toString() || "431",
+      icon: <Trophy className="w-4 h-4 text-yellow-500" />
+    },
+  ];
+
   return (
     <section
       id="about"
       ref={containerRef}
-      className="py-32 relative overflow-hidden bg-transparent"
+      className="pt-44 pb-32 relative overflow-hidden bg-transparent"
     >
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -96,13 +112,13 @@ export const About = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             The Masterpiece
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-normal text-gray-900 leading-[1] uppercase font-heading">
             Crafting Digital <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Experiences
             </span>{" "}
             That Matter
@@ -120,33 +136,35 @@ export const About = () => {
           >
             <p className="text-xl text-gray-600 leading-relaxed font-medium">
               I'm{" "}
-              <span className="font-black text-gray-900 border-b-4 border-primary/20 bg-primary/5 px-2">
+              <span className="font-black text-gray-900">
                 Navya Shaji
               </span>
               , a passionate full-stack developer specializing in the MERN stack. I bridge the gap between robust
               backend logic and elegant frontend design, creating{" "}
-              <span className="text-primary font-black italic">
+              <span className="text-primary font-black">
                 scalable solutions
               </span>{" "}
               with{" "}
-              <span className="text-secondary font-black italic">
+              <span className="text-primary font-black">
                 clean architecture
               </span>.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ y: -5 }}
-                  className="p-8 rounded-3xl bg-white shadow-xl shadow-gray-200/50 border border-gray-100 group transition-all duration-300"
+                  className="p-6 md:p-8 rounded-[2.5rem] bg-white shadow-xl shadow-gray-200/40 group transition-all duration-300 flex flex-col items-center text-center"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-primary/70 mb-4 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">{stat.icon}</div>
-                  <div className="text-4xl font-black text-gray-900 mb-1">
+                  <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-primary/70 mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-inner">
+                    {stat.icon}
+                  </div>
+                  <div className="text-3xl font-bold text-gray-900 mb-1 tracking-normal uppercase font-heading">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] text-gray-400 font-black uppercase tracking-[0.15em]">
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] whitespace-nowrap">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -167,7 +185,7 @@ export const About = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-16 rounded-2xl px-10 border-2 border-gray-200 hover:border-primary hover:bg-primary/5 transition-all font-black text-lg group"
+                className="h-16 rounded-2xl px-10 hover:bg-primary/5 transition-all font-black text-lg group"
               >
                 <a href="/Resume.pdf" download className="flex items-center gap-3">
                   <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />

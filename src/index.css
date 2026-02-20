@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -73,16 +73,15 @@
 
   .font-handwritten {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
   }
 
   .font-heading {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.01em;
   }
 
   .glass-panel {
-    @apply bg-white/40 backdrop-blur-md border border-white/60 shadow-lg;
+    @apply bg-white/40 backdrop-blur-md shadow-lg;
     box-shadow: 0 8px 32px 0 rgba(45, 74, 71, 0.05);
   }
 

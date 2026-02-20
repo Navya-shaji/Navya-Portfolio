@@ -6,6 +6,7 @@ const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
+  { href: "#leetcode", label: "LeetCode" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -52,7 +53,7 @@ export const Navigation = () => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const top = element.getBoundingClientRect().top + window.pageYOffset - 80;
+      const top = element.getBoundingClientRect().top + window.pageYOffset - 70;
       window.scrollTo({
         top,
         behavior: "smooth",
@@ -64,13 +65,15 @@ export const Navigation = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "glass-panel shadow-sm" : "bg-transparent"}`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className={`rounded-2xl md:rounded-3xl flex justify-between items-center px-6 md:px-10 py-3 md:py-5 transition-all duration-500 ${isScrolled ? "glass-panel shadow-xl scale-[0.98]" : "bg-transparent md:bg-transparent"}`}>
+      <div className="container mx-auto px-6 md:px-10">
+        <div className="flex justify-between items-center py-4 md:py-5">
           <div className="flex-1">
-            <a href="#home" className="inline-block transition-transform duration-300 hover:scale-105">
-              <img src="/navya-title.png" alt="Logo" className="h-16 md:h-32 w-auto" />
+            <a href="#home" className="flex items-center gap-4 transition-transform duration-300 hover:scale-105">
+              <img src="/navya-title.png" alt="Logo" className="h-10 md:h-12 w-auto" />
+              <div className="hidden sm:block h-6 w-[1px] bg-gray-200/50"></div>
+              <span className="hidden sm:block text-[10px] font-black tracking-[0.4em] uppercase text-gray-500">Portfolio</span>
             </a>
           </div>
 
@@ -108,7 +111,7 @@ export const Navigation = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+              className="md:hidden bg-white shadow-2xl overflow-hidden border-t border-gray-100"
             >
               <nav className="flex flex-col py-4">
                 {navLinks.map((link) => (

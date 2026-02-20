@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#fafaf8]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#fafaf8] pt-24"
     >
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -27,16 +27,16 @@ export const Hero = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="space-y-4"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest mb-2">
                 <Sparkles className="w-3 h-3" />
                 Available for Projects
               </div>
-              <h2 className="text-3xl md:text-4xl font-handwritten text-secondary italic opacity-80">
+              <h2 className="text-3xl md:text-4xl font-handwritten text-secondary opacity-80">
                 Hi! I Am
               </h2>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.8] text-gray-900 uppercase font-heading">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-normal leading-[0.8] text-gray-900 uppercase font-heading">
                 NAVYA<br />
-                <span className="text-primary italic relative">
+                <span className="text-primary relative">
                   SHAJI.
                   <motion.span
                     initial={{ width: 0 }}
@@ -69,7 +69,7 @@ export const Hero = () => {
                       scale: 1.1,
                       backgroundColor: 'rgba(var(--primary), 0.1)'
                     }}
-                    className="group relative w-14 h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-gray-600 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+                    className="group relative w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-600 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
                   >
                     <item.Icon className="w-6 h-6 group-hover:text-primary transition-colors" />
                     <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md font-bold">
@@ -119,7 +119,7 @@ export const Hero = () => {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-2 md:-right-4 bottom-[15%] md:bottom-auto md:top-[20%] z-20 bg-white p-3 md:p-4 rounded-xl md:rounded-2xl shadow-2xl border border-primary/5 flex items-center gap-2 md:gap-3 backdrop-blur-md"
+                className="absolute -right-2 md:-right-4 bottom-[15%] md:bottom-auto md:top-[20%] z-20 bg-white p-3 md:p-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-3 backdrop-blur-md"
               >
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-primary/10 flex items-center justify-center">
                   <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
@@ -142,7 +142,7 @@ export const Hero = () => {
             >
               <div className="absolute -left-4 -top-4 text-6xl text-primary/10 font-black">"</div>
               <p className="text-xl md:text-2xl font-bold text-gray-800 leading-[1.3] relative z-10">
-                I build <span className="text-primary italic">scalable</span> backends and <span className="text-secondary italic">elegant</span> interfaces for the modern web.
+                I build <span className="text-primary">scalable</span> backends and <span className="text-secondary">elegant</span> interfaces for the modern web.
               </p>
             </motion.div>
 
@@ -155,7 +155,7 @@ export const Hero = () => {
               <div className="flex flex-col items-center lg:items-end">
                 <span className="text-4xl md:text-5xl font-black text-gray-900 leading-none tracking-tighter font-heading">Software</span>
                 <div className="relative">
-                  <span className="text-4xl md:text-5xl font-handwritten text-primary italic mt-[-5px]">Developer</span>
+                  <span className="text-4xl md:text-5xl font-handwritten text-primary mt-[-5px]">Developer</span>
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}

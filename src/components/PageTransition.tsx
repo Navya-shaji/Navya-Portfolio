@@ -63,7 +63,7 @@ export const PageTransition = ({ children }: { children: React.ReactNode }) => {
                                     transition={{ delay: 0.4 }}
                                     className="font-mono text-4xl font-black text-foreground tracking-[0.5em]"
                                 >
-                                    NAVYA<span className="text-primary italic">_</span>SHAJI
+                                    NAVYA<span className="text-primary">_</span>SHAJI
                                 </motion.div>
                                 <motion.div
                                     initial={{ width: 0 }}

@@ -30,7 +30,7 @@ const timeline = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-32 bg-background relative overflow-hidden">
+    <section id="experience" className="pt-44 pb-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -43,7 +43,7 @@ export const Experience = () => {
              // CAREER_MILESTONES
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tight text-primary mb-4 uppercase">
-            Career<span className="text-secondary font-handwritten italic lowercase ml-4">Path</span>
+            Career<span className="text-secondary font-handwritten lowercase ml-4">Path</span>
           </h2>
           <div className="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
         </motion.div>
@@ -68,13 +68,13 @@ export const Experience = () => {
                     }`}
                 >
                   {/* Neon Dot */}
-                  <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-[2rem] bg-white border-4 border-secondary shadow-lg flex items-center justify-center z-10 transition-transform hover:scale-110 active:scale-95 cursor-pointer`}>
+                  <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-[2rem] bg-white shadow-lg flex items-center justify-center z-10 transition-transform hover:scale-110 active:scale-95 cursor-pointer`}>
                     <Icon className="w-8 h-8 text-primary" />
                   </div>
 
                   {/* Content Container */}
                   <div className={`ml-24 md:ml-0 ${isLeft ? "md:mr-16" : "md:ml-16"}`}>
-                    <div className="bg-white p-12 rounded-[4rem] border border-primary/5 shadow-xl hover:shadow-2xl transition-all group overflow-hidden relative">
+                    <div className="bg-white p-12 rounded-[4rem] shadow-xl hover:shadow-2xl transition-all group overflow-hidden relative">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
                       <div className={`flex flex-col gap-4 mb-8 ${isLeft ? "md:items-end" : ""}`}>
@@ -82,8 +82,8 @@ export const Experience = () => {
                           {item.period}
                         </span>
                         <div>
-                          <h3 className="text-3xl font-black text-primary mb-1 uppercase leading-tight">{item.title}</h3>
-                          <p className="text-sm font-handwritten text-secondary italic text-lg">
+                          <h3 className="text-3xl font-bold text-primary mb-1 uppercase leading-tight font-heading tracking-normal">{item.title}</h3>
+                          <p className="text-sm font-handwritten text-secondary text-lg">
                             {item.organization}
                           </p>
                         </div>
@@ -95,7 +95,7 @@ export const Experience = () => {
 
                       <div className={`flex flex-wrap gap-3 ${isLeft ? "md:justify-end" : ""}`}>
                         {item.highlights.map((h, i) => (
-                          <span key={i} className="text-[10px] font-black uppercase tracking-widest text-primary/40 border border-primary/10 px-4 py-2 rounded-xl">
+                          <span key={i} className="text-[10px] font-black uppercase tracking-widest text-primary/40 px-4 py-2 rounded-xl bg-gray-50">
                             {h}
                           </span>
                         ))}

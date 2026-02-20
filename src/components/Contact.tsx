@@ -88,7 +88,7 @@ export const Contact = () => {
           </div>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
             Start A <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">Conversation</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Conversation</span>
           </h2>
         </motion.div>
 

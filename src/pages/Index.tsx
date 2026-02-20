@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
+import { LeetCodeBadges } from "@/components/LeetCodeBadges";
 import { Contact } from "@/components/Contact";
 import { PageTransition } from "@/components/PageTransition";
 import { Github, Twitter, Linkedin } from "lucide-react";
@@ -25,15 +26,16 @@ const Index = () => {
         <Hero />
         <About />
         <Projects />
+        <LeetCodeBadges />
         <Contact />
       </PageTransition>
 
       {/* Footer */}
-      <footer className="py-20 relative z-10 border-t border-gray-100">
+      <footer className="py-20 relative z-10">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
-              <div className="text-3xl font-black tracking-tighter text-gray-900 mb-1 uppercase font-heading">
+              <div className="text-3xl font-bold tracking-normal text-gray-900 mb-1 uppercase font-heading">
                 Navya Shaji
               </div>
               <p className="text-gray-400 font-bold uppercase text-[10px] tracking-widest">

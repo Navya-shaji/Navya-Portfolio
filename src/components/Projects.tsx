@@ -24,6 +24,14 @@ const mainProjects = [
 
 const subProjects = [
   {
+    title: "Occasia",
+    description: "A world-class event management platform designed for prestigious events. Connects discerning clients with luxury service providers like exclusive venues and gourmet caterers using a seamless booking ecosystem.",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Tailwind"],
+    github: "https://github.com/Navya-shaji",
+    demo: "https://occasia-app-new.vercel.app/"
+  },
+  {
     title: "AI Studio",
     description: "Next-gen image enhancement suite leveraging neural networks for smart object removal and generative fill.",
     image: "/ai-studio.png",
@@ -69,7 +77,7 @@ export const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-32 relative overflow-hidden bg-transparent">
+    <section id="projects" className="pt-44 pb-32 relative overflow-hidden bg-transparent">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,13 +86,13 @@ export const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 text-primary text-[11px] font-black tracking-[0.2em] uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-[11px] font-black tracking-[0.2em] uppercase mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             The Portfolio
           </div>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 leading-[1] uppercase font-heading">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-normal text-gray-900 leading-[1] uppercase font-heading">
             Engineering <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary italic">Digital Solutions</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Digital Solutions</span>
           </h2>
         </motion.div>
 
@@ -100,7 +108,7 @@ export const Projects = () => {
               className="group relative"
             >
               {/* Card Container */}
-              <div className="relative rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-gray-200/50 border border-gray-100 transition-all duration-500 hover:shadow-primary/5">
+              <div className="relative rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-gray-200/50 transition-all duration-500 hover:shadow-primary/5 flex flex-col h-full">
 
                 {/* Image Section */}
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -114,7 +122,7 @@ export const Projects = () => {
                   {/* Floating Tech Stack Overlay */}
                   <div className="absolute top-6 left-6 flex flex-wrap gap-2">
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-widest rounded-full">
+                      <span key={tech} className="px-4 py-1.5 bg-white/10 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-full">
                         {tech}
                       </span>
                     ))}
@@ -148,15 +156,15 @@ export const Projects = () => {
                 </div>
 
                 {/* Info Section */}
-                <div className="p-10">
+                <div className="p-10 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-3xl font-black text-gray-900 group-hover:text-primary transition-colors tracking-tighter uppercase">{project.title}</h3>
+                    <h3 className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors tracking-normal uppercase font-heading">{project.title}</h3>
                     <div className="w-12 h-0.5 bg-primary/20" />
                   </div>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium">
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium line-clamp-4 flex-1">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-50">
+                  <div className="flex flex-wrap gap-2 pt-2">
                     {project.technologies.map((tech) => (
                       <span key={tech} className="text-[10px] font-black text-primary/40 uppercase tracking-widest mr-4">
                         # {tech}
@@ -179,19 +187,19 @@ export const Projects = () => {
         >
           <div className="flex items-end justify-between mb-12 px-2">
             <div>
-              <h3 className="text-4xl font-black text-gray-900 tracking-tighter uppercase">More Work</h3>
+              <h3 className="text-4xl font-bold text-gray-900 tracking-normal uppercase font-heading">More Work</h3>
               <p className="text-gray-400 font-bold uppercase text-xs tracking-widest mt-2">Experimental & Side Projects</p>
             </div>
             <div className="flex gap-4">
               <button
                 onClick={() => scroll("left")}
-                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-primary group hover:border-primary hover:bg-primary/5 transition-all active:scale-90"
+                className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-primary group hover:bg-primary/5 transition-all active:scale-90"
               >
                 <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-1" />
               </button>
               <button
                 onClick={() => scroll("right")}
-                className="w-14 h-14 rounded-2xl border-2 border-gray-100 flex items-center justify-center text-primary group hover:border-primary hover:bg-primary/5 transition-all active:scale-90"
+                className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-primary group hover:bg-primary/5 transition-all active:scale-90"
               >
                 <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </button>
@@ -209,8 +217,8 @@ export const Projects = () => {
                   key={index}
                   className="flex-shrink-0 w-[380px] group/card snap-start"
                 >
-                  <div className="rounded-[2rem] bg-white p-6 shadow-xl shadow-gray-200/40 border border-gray-100 hover:border-primary/40 transition-all duration-300">
-                    <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
+                  <div className="rounded-[2rem] bg-white p-6 shadow-xl shadow-gray-200/40 transition-all duration-300 flex flex-col h-full">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden mb-6 flex-shrink-0">
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
                         <a href={project.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-xl bg-white text-gray-900 flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
@@ -223,16 +231,18 @@ export const Projects = () => {
                         )}
                       </div>
                     </div>
-                    <h4 className="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{project.title}</h4>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-gray-50 text-primary/60 text-[9px] font-black rounded-lg uppercase tracking-widest border border-gray-100">
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="flex-1 flex flex-col">
+                      <h4 className="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{project.title}</h4>
+                      <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium line-clamp-2 flex-1">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.technologies.map((tech) => (
+                          <span key={tech} className="px-3 py-1 bg-gray-50 text-primary/60 text-[9px] font-black rounded-lg uppercase tracking-widest">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
