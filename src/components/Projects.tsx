@@ -10,7 +10,7 @@ const mainProjects = [
     image: "/Nextick.jpg",
     technologies: ["Node.js", "MongoDB", "Express", "Razorpay", "EJS"],
     github: "https://github.com/Navya-shaji/NextTIck-E-Commerce",
-    demo: "#"
+    demo: "https://nextick.offwego.online"
   },
   {
     title: "OffWeGo",
