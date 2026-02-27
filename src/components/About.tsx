@@ -78,7 +78,7 @@ export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Live LeetCode Stats Fetching with Failover
-  const { data: leetcodeData } = useQuery({
+  const { data: leetcodeData, isLoading } = useQuery({
     queryKey: ['leetcodeStats'],
     queryFn: async () => {
       const sources = [
@@ -111,7 +111,11 @@ export const About = () => {
     { label: "Technologies", value: "15+", icon: <Database className="w-4 h-4" /> },
     {
       label: "LeetCode Solved",
-      value: leetcodeData?.totalSolved?.toString() || "480",
+      value: isLoading ? (
+        <span className="inline-block w-12 h-8 bg-gray-100 animate-pulse rounded-lg" />
+      ) : (
+        leetcodeData?.totalSolved?.toString() || "450+"
+      ),
       icon: <Trophy className="w-4 h-4 text-yellow-500" />
     },
   ];

@@ -16,7 +16,7 @@ export const Hero = () => {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 py-20 lg:py-0">
+      <div className="container mx-auto px-6 relative z-10 py-12 lg:py-0">
         <div className="grid grid-cols-12 gap-8 items-center">
 
           {/* Left Content: Name & Socials */}
@@ -175,7 +175,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
       >
         <div className="w-6 h-10 border-2 border-primary/20 rounded-full flex justify-center p-1">
           <motion.div

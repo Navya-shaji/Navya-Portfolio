@@ -9,7 +9,7 @@ import { Github, Twitter, Linkedin } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative bg-[#fafafc] overflow-hidden">
+    <div className="min-h-screen relative bg-[#fafafc] overflow-x-hidden">
       {/* Premium Background Design */}
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Soft Decorative Orbs */}
