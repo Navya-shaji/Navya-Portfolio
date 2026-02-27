@@ -111,10 +111,10 @@ export const About = () => {
     { label: "Technologies", value: "15+", icon: <Database className="w-4 h-4" /> },
     {
       label: "LeetCode Solved",
-      value: isLoading ? (
-        <span className="inline-block w-12 h-8 bg-gray-100 animate-pulse rounded-lg" />
-      ) : (
-        leetcodeData?.totalSolved?.toString() || "450+"
+      value: (
+        <span className={isLoading ? "animate-pulse opacity-70" : ""}>
+          {leetcodeData?.totalSolved?.toString() || "450+"}
+        </span>
       ),
       icon: <Trophy className="w-4 h-4 text-yellow-500" />
     },
