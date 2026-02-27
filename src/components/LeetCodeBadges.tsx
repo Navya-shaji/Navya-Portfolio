@@ -1,20 +1,14 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Star } from "lucide-react";
 
-import badge50 from "../assets/leetcode/50.gif";
 import badge200 from "../assets/leetcode/200.gif";
 import badge365 from "../assets/leetcode/365_new.gif";
 import badge2025 from "../assets/leetcode/2025.gif";
-import badge2550 from "../assets/leetcode/2550.gif";
-import badge25100 from "../assets/leetcode/25100.gif";
 
 const badgeData = [
-    { label: "50-Day Streak 2026", year: "2026", image: badge50, glow: "rgba(251, 191, 36, 0.3)" },
     { label: "200-Day Streak", year: "2024", image: badge200, glow: "rgba(251, 113, 133, 0.3)" },
     { label: "365-Day Streak", year: "2024", image: badge365, glow: "rgba(96, 165, 250, 0.3)" },
     { label: "Annual Master", year: "2025", image: badge2025, glow: "rgba(167, 139, 250, 0.3)" },
-    { label: "Consistency Combo", year: "2025", image: badge2550, glow: "rgba(52, 211, 153, 0.3)" },
-    { label: "Elite Streak", year: "2025", image: badge25100, glow: "rgba(251, 146, 60, 0.3)" },
 ];
 
 export const LeetCodeBadges = () => {
