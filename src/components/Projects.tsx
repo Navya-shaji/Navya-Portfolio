@@ -77,27 +77,27 @@ export const Projects = () => {
   };
 
   return (
-    <section id="projects" className="pt-44 pb-32 relative overflow-hidden bg-transparent">
+    <section id="projects" className="pt-24 md:pt-44 pb-20 md:pb-32 relative overflow-hidden bg-transparent">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-24"
+          className="text-center mb-12 md:mb-24"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 text-primary text-[11px] font-black tracking-[0.2em] uppercase mb-6">
             <Sparkles className="w-3.5 h-3.5" />
             The Portfolio
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-normal text-gray-900 leading-[1] uppercase font-heading">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.1] uppercase font-heading">
             Engineering <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Digital Solutions</span>
           </h2>
         </motion.div>
 
         {/* Main Projects */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto mb-32">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto mb-20 md:mb-32">
           {mainProjects.map((project, index) => (
             <motion.div
               key={index}
@@ -108,7 +108,7 @@ export const Projects = () => {
               className="group relative"
             >
               {/* Card Container */}
-              <div className="relative rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-gray-200/50 transition-all duration-500 hover:shadow-primary/5 flex flex-col h-full">
+              <div className="relative rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-white shadow-2xl shadow-gray-200/50 transition-all duration-500 hover:shadow-primary/5 flex flex-col h-full">
 
                 {/* Image Section */}
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -122,7 +122,7 @@ export const Projects = () => {
                   {/* Floating Tech Stack Overlay */}
                   <div className="absolute top-6 left-6 flex flex-wrap gap-2">
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-4 py-1.5 bg-white/10 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-full">
+                      <span key={tech} className="px-4 py-1.5 bg-gray-900/80 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-widest rounded-full border border-white/10">
                         {tech}
                       </span>
                     ))}
@@ -156,17 +156,17 @@ export const Projects = () => {
                 </div>
 
                 {/* Info Section */}
-                <div className="p-10 flex-1 flex flex-col">
+                <div className="p-6 md:p-10 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors tracking-normal uppercase font-heading">{project.title}</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors tracking-normal uppercase font-heading">{project.title}</h3>
                     <div className="w-12 h-0.5 bg-primary/20" />
                   </div>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-8 font-medium line-clamp-4 flex-1">
+                  <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-6 md:mb-8 font-medium line-clamp-4 flex-1">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {project.technologies.map((tech) => (
-                      <span key={tech} className="text-[10px] font-black text-primary/40 uppercase tracking-widest mr-4">
+                      <span key={tech} className="text-[10px] font-black text-primary/80 uppercase tracking-widest mr-4">
                         # {tech}
                       </span>
                     ))}
@@ -187,8 +187,8 @@ export const Projects = () => {
         >
           <div className="flex items-end justify-between mb-12 px-2">
             <div>
-              <h3 className="text-4xl font-bold text-gray-900 tracking-normal uppercase font-heading">More Work</h3>
-              <p className="text-gray-400 font-bold uppercase text-xs tracking-widest mt-2">Experimental & Side Projects</p>
+              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-normal uppercase font-heading">More Work</h3>
+              <p className="text-gray-400 font-bold uppercase text-[10px] md:text-xs tracking-widest mt-2">Experimental & Side Projects</p>
             </div>
             <div className="flex gap-4">
               <button
@@ -209,15 +209,15 @@ export const Projects = () => {
           <div className="relative group/gallery">
             <div
               ref={scrollRef}
-              className="flex gap-8 overflow-x-auto pb-12 px-2 scrollbar-hide snap-x snap-mandatory"
+              className="flex gap-4 md:gap-8 overflow-x-auto pb-12 px-2 scrollbar-hide snap-x snap-mandatory"
               style={{ scrollBehavior: 'smooth' }}
             >
               {subProjects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="flex-shrink-0 w-[380px] group/card snap-start"
+                  className="flex-shrink-0 w-[300px] md:w-[380px] group/card snap-start"
                 >
-                  <div className="rounded-[2rem] bg-white p-6 shadow-xl shadow-gray-200/40 transition-all duration-300 flex flex-col h-full">
+                  <div className="rounded-[1.5rem] md:rounded-[2rem] bg-white p-5 md:p-6 shadow-xl shadow-gray-200/40 transition-all duration-300 flex flex-col h-full">
                     <div className="relative aspect-video rounded-2xl overflow-hidden mb-6 flex-shrink-0">
                       <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center gap-4 backdrop-blur-sm">
@@ -238,7 +238,7 @@ export const Projects = () => {
                       </p>
                       <div className="flex flex-wrap gap-2 mt-auto">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="px-3 py-1 bg-gray-50 text-primary/60 text-[9px] font-black rounded-lg uppercase tracking-widest">
+                          <span key={tech} className="px-3 py-1 bg-gray-50 text-primary/90 text-[9px] font-black rounded-lg uppercase tracking-widest border border-primary/5">
                             {tech}
                           </span>
                         ))}

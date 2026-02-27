@@ -77,15 +77,33 @@ const TechGrid = () => {
 export const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Live LeetCode Stats Fetching
+  // Live LeetCode Stats Fetching with Failover
   const { data: leetcodeData } = useQuery({
     queryKey: ['leetcodeStats'],
     queryFn: async () => {
-      const response = await fetch('https://leetcode-stats-api.herokuapp.com/Navyacs');
-      if (!response.ok) throw new Error('Failed to fetch');
-      return response.json();
+      const sources = [
+        { url: 'https://leetcode-stats-api.herokuapp.com/Navyacs', key: 'totalSolved' },
+        { url: 'https://alfa-leetcode-api.onrender.com/Navyacs/solved', key: 'solvedProblem' },
+        { url: 'https://leetcode-api-faisalshohag.vercel.app/Navyacs', key: 'totalSolved' }
+      ];
+
+      for (const source of sources) {
+        try {
+          const response = await fetch(source.url);
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data[source.key]) {
+              return { totalSolved: data[source.key] };
+            }
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch from ${source.url}:`, error);
+        }
+      }
+      throw new Error('All LeetCode API sources failed');
     },
-    refetchInterval: 600000, // Refetch every 10 minutes
+    refetchInterval: 3600000, // Refetch every hour to minimize rate limiting
+    retry: 2,
   });
 
   const stats = [
@@ -93,7 +111,7 @@ export const About = () => {
     { label: "Technologies", value: "15+", icon: <Database className="w-4 h-4" /> },
     {
       label: "LeetCode Solved",
-      value: leetcodeData?.totalSolved?.toString() || "431",
+      value: leetcodeData?.totalSolved?.toString() || "480",
       icon: <Trophy className="w-4 h-4 text-yellow-500" />
     },
   ];
