@@ -5,21 +5,18 @@ import { Projects } from "@/components/Projects";
 import { LeetCodeBadges } from "@/components/LeetCodeBadges";
 import { Contact } from "@/components/Contact";
 import { PageTransition } from "@/components/PageTransition";
+import { FloatingShapes } from "@/components/FloatingShapes";
 import { Github, Twitter, Linkedin } from "lucide-react";
 
 const Index = () => {
   return (
     <div className="min-h-screen relative bg-[#fafafc] overflow-x-hidden">
-      {/* Premium Background Design */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Soft Decorative Orbs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full blur-[160px] bg-primary/10 opacity-40 animate-pulse" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[80vw] h-[80vw] rounded-full blur-[180px] bg-secondary/10 opacity-40" />
-        <div className="absolute top-[20%] left-[30%] w-[40vw] h-[40vw] rounded-full blur-[140px] bg-primary/5 opacity-30" />
+      {/* Premium 3D Background Design */}
+      <FloatingShapes />
 
-        {/* Texture Overlay */}
-        <div className="absolute inset-0 opacity-[0.015] brightness-50" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/p6-dark.png')" }} />
-      </div>
+      {/* Texture Overlay */}
+      <div className="fixed inset-0 opacity-[0.015] brightness-50 pointer-events-none z-0" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/p6-dark.png')" }} />
+
 
       <PageTransition>
         <Navigation />

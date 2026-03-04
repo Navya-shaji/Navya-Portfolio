@@ -31,8 +31,8 @@ export const Hero = () => {
                 <Sparkles className="w-3 h-3" />
                 Available for Projects
               </div>
-              <h2 className="text-3xl md:text-4xl font-handwritten text-secondary opacity-80">
-                Hi! I Am
+              <h2 className="text-3xl md:text-5xl font-handwritten text-secondary italic opacity-80 mb-[-15px]">
+                Web Enthusiast
               </h2>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-normal leading-[0.8] text-gray-900 uppercase font-heading">
                 NAVYA<br />
@@ -48,37 +48,8 @@ export const Hero = () => {
               </h1>
             </motion.div>
 
-            {/* Social Icons & Location */}
+            {/* Location */}
             <div className="flex flex-col items-center lg:items-start gap-6 pt-10">
-              <div className="flex gap-4">
-                {[
-                  { Icon: Github, href: "https://github.com/Navya-shaji", label: "Github" },
-                  { Icon: Twitter, href: "https://x.com/navyacs122511", label: "Twitter" },
-                  { Icon: Linkedin, href: "https://www.linkedin.com/in/navya-shaji-b3b81b325/", label: "Linkedin" }
-                ].map((item, i) => (
-                  <motion.a
-                    key={i}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.2 + i * 0.1 }}
-                    whileHover={{
-                      y: -5,
-                      scale: 1.1,
-                      backgroundColor: 'rgba(var(--primary), 0.1)'
-                    }}
-                    className="group relative w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-600 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5"
-                  >
-                    <item.Icon className="w-6 h-6 group-hover:text-primary transition-colors" />
-                    <span className="absolute -top-10 scale-0 group-hover:scale-100 transition-transform bg-gray-900 text-white text-[10px] px-2 py-1 rounded-md font-bold">
-                      {item.label}
-                    </span>
-                  </motion.a>
-                ))}
-              </div>
-
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

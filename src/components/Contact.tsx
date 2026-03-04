@@ -134,28 +134,6 @@ export const Contact = () => {
                 </div>
               </div>
 
-              {/* Social Connect Card */}
-              <div className="p-10 rounded-[2.5rem] bg-gray-900 text-white shadow-2xl relative overflow-hidden group">
-                <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity" />
-                <h4 className="text-2xl font-black mb-6 tracking-tighter uppercase">Follow My Journey</h4>
-                <div className="flex gap-4">
-                  {[
-                    { Icon: Github, href: "https://github.com/Navya-shaji" },
-                    { Icon: Twitter, href: "https://x.com/navyacs122511" },
-                    { Icon: Linkedin, href: "https://www.linkedin.com/in/navya-shaji-b3b81b325/" }
-                  ].map((social, i) => (
-                    <a
-                      key={i}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-14 h-14 rounded-2xl bg-white/10 hover:bg-white hover:text-gray-900 flex items-center justify-center transition-all duration-300"
-                    >
-                      <social.Icon className="w-6 h-6" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </motion.div>
           </div>
 
