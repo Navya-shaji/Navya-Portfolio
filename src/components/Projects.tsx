@@ -24,6 +24,14 @@ const mainProjects = [
 
 const subProjects = [
   {
+    title: "Journal",
+    description: "A full-stack journaling app with secure authentication, cloud-synced entries, and a creative scrapbook experience powered by React Native & MongoDB.",
+    image: "/journal-cover.png",
+    technologies: ["React Native", "Expo", "Node.js", "MongoDB", "JWT"],
+    github: "https://github.com/Navya-shaji/Journal",
+    demo: "https://journal-1-fex9.onrender.com"
+  },
+  {
     title: "Occasia",
     description: "A world-class event management platform designed for prestigious events. Connects discerning clients with luxury service providers like exclusive venues and gourmet caterers using a seamless booking ecosystem.",
     image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
